@@ -15,7 +15,11 @@ const app = express();
 // Middleware
 // ==================
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173'], // Allow both common React dev ports
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://perfumefrontend.onrender.com' // ✅ Added your deployed frontend
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
