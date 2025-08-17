@@ -39,6 +39,9 @@ const upload = multer({
 // Get all products (public)
 router.get('/', productController.getAllProducts);
 
+// Get image status for all products (admin only)
+router.get('/image-status', auth, productController.getImageStatus);
+
 // Test endpoint to verify image serving
 router.get('/test-image/:filename', (req, res) => {
   const { filename } = req.params;
