@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+</head>
+<body>
+    <h1>Backend Image Serving Test</h1>
+    <p>This page tests if the backend is properly serving images from the uploads directory.</p>
+    
+    <h2>Test Image URLs:</h2>
+    <ul>
+        <li><a href="http://localhost:5000/uploads/test-image.jpg" target="_blank">Test Image 1</a></li>
+        <li><a href="http://localhost:5000/uploads/another-image.png" target="_blank">Test Image 2</a></li>
+    </ul>
+    
+    <h2>API Test:</h2>
+    <button onclick="testAPI()">Test Products API</button>
+    <div id="api-result"></div>
+    
+    <script>
+        async function testAPI() {
+            try {
+                const response = await fetch('http://localhost:5000/api/products');
+                const data = await response.json();
+                document.getElementById('api-result').innerHTML = 
+                    '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('api-result').innerHTML = 
+                    '<p style="color: red;">Error: ' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>
